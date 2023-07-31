@@ -4,7 +4,7 @@ import './App.css';
 
 function Counter() {
   const [step, setStep] = useState(1);
-  const [count, setCount] = useState(step);
+  const [count, setCount] = useState(1);
 
   function calculateFutureDate() {
     const currentDate = new Date();
@@ -34,16 +34,19 @@ function Counter() {
         ></input>
         <button onClick={() => setCount((c) => c + step)}>+</button>
       </div>
-      <div>
-        <button
-          onClick={() => {
-            setStep(0);
-            setCount(0);
-          }}
-        >
-          Reset
-        </button>
-      </div>
+
+      {step !== 1 || count !== 1 ? (
+        <div>
+          <button
+            onClick={() => {
+              setStep(1);
+              setCount(1);
+            }}
+          >
+            Reset
+          </button>
+        </div>
+      ) : null}
       <div>
         <p>{`Current Date: ${new Date().toDateString()}`}</p>
         <p>{`Future Date: ${calculateFutureDate().toDateString()}`}</p>
